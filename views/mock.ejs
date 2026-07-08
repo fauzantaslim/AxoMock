@@ -41,17 +41,16 @@
               <!-- Method Dropdown -->
               <select x-model="form.method" class="cursor-pointer flex-shrink-0 px-3 py-2.5 text-sm font-mono font-bold rounded-lg border border-slate-200 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-axolotl-pink-500/30 focus:border-axolotl-pink-500 transition-colors"
                 :class="{
-                  'text-deep-teal': form.method === 'GET',
-                  'text-green-600': form.method === 'POST',
-                  'text-blue-600': form.method === 'PUT',
-                  'text-amber-600': form.method === 'PATCH',
+                  'text-green-600': form.method === 'GET',
+                  'text-amber-600': form.method === 'POST',
+                  'text-blue-600': form.method === 'PUT' || form.method === 'PATCH',
                   'text-red-600': form.method === 'DELETE'
                 }">
-                <option value="GET">GET</option>
-                <option value="POST">POST</option>
-                <option value="PUT">PUT</option>
-                <option value="PATCH">PATCH</option>
-                <option value="DELETE">DELETE</option>
+                <option value="GET" class="text-green-600">GET</option>
+                <option value="POST" class="text-amber-600">POST</option>
+                <option value="PUT" class="text-blue-600">PUT</option>
+                <option value="PATCH" class="text-blue-600">PATCH</option>
+                <option value="DELETE" class="text-red-600">DELETE</option>
               </select>
               <!-- Path Input -->
               <div class="flex-1 relative">
@@ -60,7 +59,7 @@
                   x-model="form.path"
                   type="text"
                   placeholder="products/featured"
-                  class="w-full pl-[72px] pr-3 py-2.5 text-sm font-mono rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-axolotl-pink-500/30 focus:border-axolotl-pink-500 transition-colors placeholder:text-slate-400"
+                  class="w-full pl-[88px] pr-3 py-2.5 text-sm font-mono rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-axolotl-pink-500/30 focus:border-axolotl-pink-500 transition-colors placeholder:text-slate-400"
                   :class="{ 'border-red-400': errors.path }"
                 >
               </div>

@@ -6,7 +6,7 @@
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2 group">
-        <span class="text-2xl transition-transform group-hover:scale-110">🦎</span>
+        <img src="/images/head-axo.png" alt="Axomock" class="w-8 h-8 transition-transform group-hover:scale-110 object-contain">
         <span class="font-display font-bold text-xl text-slate-950 tracking-tight">Axomock</span>
       </a>
 
@@ -17,13 +17,13 @@
           const isDocs = typeof page !== 'undefined' && page === 'docs';
           const isMock = typeof page !== 'undefined' && page === 'mock';
         %>
-        <a href="/" class="relative px-1 py-2 text-sm font-medium transition-colors group <%= isHome ? 'text-deep-teal' : 'text-slate-600 hover:text-slate-950' %>">
+        <a href="/" class="relative px-1 py-2 text-sm font-medium transition-colors group <%= isHome ? 'text-axolotl-pink-500' : 'text-slate-600 hover:text-slate-950' %>">
           Home
-          <span class="absolute inset-x-0 -bottom-1 h-[2px] transition-transform duration-300 origin-left <%= isHome ? 'bg-deep-teal scale-x-100' : 'bg-slate-950 scale-x-0 group-hover:scale-x-100' %>"></span>
+          <span class="absolute inset-x-0 -bottom-1 h-[2px] transition-transform duration-300 origin-left <%= isHome ? 'bg-axolotl-pink-500 scale-x-100' : 'bg-slate-950 scale-x-0 group-hover:scale-x-100' %>"></span>
         </a>
-        <a href="/docs" class="relative px-1 py-2 text-sm font-medium transition-colors group <%= isDocs ? 'text-deep-teal' : 'text-slate-600 hover:text-slate-950' %>">
+        <a href="/docs" class="relative px-1 py-2 text-sm font-medium transition-colors group <%= isDocs ? 'text-axolotl-pink-500' : 'text-slate-600 hover:text-slate-950' %>">
           Docs
-          <span class="absolute inset-x-0 -bottom-1 h-[2px] transition-transform duration-300 origin-left <%= isDocs ? 'bg-deep-teal scale-x-100' : 'bg-slate-950 scale-x-0 group-hover:scale-x-100' %>"></span>
+          <span class="absolute inset-x-0 -bottom-1 h-[2px] transition-transform duration-300 origin-left <%= isDocs ? 'bg-axolotl-pink-500 scale-x-100' : 'bg-slate-950 scale-x-0 group-hover:scale-x-100' %>"></span>
         </a>
         <a href="/mock" class="relative px-1 py-2 text-sm font-medium transition-colors group <%= isMock ? 'text-axolotl-pink-500' : 'text-slate-600 hover:text-slate-950' %>">
           Mock Builder
@@ -65,10 +65,10 @@
     class="md:hidden border-t border-slate-200 bg-white"
   >
     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-      <a href="/" class="block px-3 py-2 rounded-md text-base font-medium <%= isHome ? 'bg-slate-50 text-deep-teal' : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900' %>">
+      <a href="/" class="block px-3 py-2 rounded-md text-base font-medium <%= isHome ? 'bg-axolotl-pink-50 text-axolotl-pink-500' : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900' %>">
         Home
       </a>
-      <a href="/docs" class="block px-3 py-2 rounded-md text-base font-medium <%= isDocs ? 'bg-slate-50 text-deep-teal' : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900' %>">
+      <a href="/docs" class="block px-3 py-2 rounded-md text-base font-medium <%= isDocs ? 'bg-axolotl-pink-50 text-axolotl-pink-500' : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900' %>">
         Docs
       </a>
       <a href="/mock" class="block px-3 py-2 rounded-md text-base font-medium <%= isMock ? 'bg-axolotl-pink-50 text-axolotl-pink-500' : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900' %>">
