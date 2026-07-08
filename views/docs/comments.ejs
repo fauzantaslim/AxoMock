@@ -1,0 +1,114 @@
+<div class="flex flex-col md:flex-row max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 gap-8">
+  <%- include('../partials/docs-sidebar', { activeSection: 'comments' }) %>
+  
+  <div class="flex-1 max-w-3xl min-w-0 pb-20">
+    <h1 id="comments" class="text-3xl md:text-4xl font-display font-bold text-slate-950 mb-4">💬 Comments API</h1>
+    <p class="text-lg text-slate-600 mb-12 leading-relaxed">
+      100 comments linked to posts and users.
+    </p>
+
+    <!-- GET All -->
+    <%- include('../partials/api-endpoint', {
+      id: 'get-all-comments',
+      title: 'Get all comments',
+      description: 'Get all comments (paginated).',
+      fetchCode: `<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'https://axomock.dev/api/comments'</span>)\n  .<span class="text-blue-400">then</span>(res => res.<span class="text-blue-400">json</span>())\n  .<span class="text-blue-400">then</span>(<span class="text-blue-400">console</span>.log);`,
+      axiosCode: `<span class="text-blue-400">axios</span>.<span class="text-blue-400">get</span>(<span class="text-emerald-400">'https://axomock.dev/api/comments'</span>)\n  .<span class="text-blue-400">then</span>(res => <span class="text-blue-400">console</span>.log(res.data));`,
+      curlCode: `curl <span class="text-emerald-400">https://axomock.dev/api/comments</span>`,
+      responseStatus: '200 OK',
+      responseColor: 'bg-emerald-500',
+      responseJson: `{\n  <span class="text-axolotl-pink-400">"comments"</span>: [\n    {\n      <span class="text-axolotl-pink-400">"id"</span>: <span class="text-emerald-400">1</span>,\n      <span class="text-axolotl-pink-400">"body"</span>: <span class="text-emerald-400">"Great article! I've been using these principles in my projects and they really make a difference."</span>,\n      <span class="text-axolotl-pink-400">"postId"</span>: <span class="text-emerald-400">1</span>,\n      <span class="text-axolotl-pink-400">"user"</span>: {\n        <span class="text-axolotl-pink-400">"id"</span>: <span class="text-emerald-400">3</span>,\n        <span class="text-axolotl-pink-400">"username"</span>: <span class="text-emerald-400">"noahb"</span>\n      }\n    },\n    <span class="text-slate-500">... // 29 more items</span>\n  ],\n  <span class="text-axolotl-pink-400">"total"</span>: <span class="text-emerald-400">100</span>,\n  <span class="text-axolotl-pink-400">"skip"</span>: <span class="text-emerald-400">0</span>,\n  <span class="text-axolotl-pink-400">"limit"</span>: <span class="text-emerald-400">30</span>\n}`
+    }) %>
+    
+    <hr class="border-slate-200 my-12">
+
+    <!-- GET Search -->
+    <%- include('../partials/api-endpoint', {
+      id: 'search-comments',
+      title: 'Search comments',
+      description: 'Search comments by body text.',
+      fetchCode: `<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'https://axomock.dev/api/comments/search?q=great'</span>)\n  .<span class="text-blue-400">then</span>(res => res.<span class="text-blue-400">json</span>())\n  .<span class="text-blue-400">then</span>(<span class="text-blue-400">console</span>.log);`,
+      axiosCode: `<span class="text-blue-400">axios</span>.<span class="text-blue-400">get</span>(<span class="text-emerald-400">'https://axomock.dev/api/comments/search?q=great'</span>)\n  .<span class="text-blue-400">then</span>(res => <span class="text-blue-400">console</span>.log(res.data));`,
+      curlCode: `curl <span class="text-emerald-400">"https://axomock.dev/api/comments/search?q=great"</span>`,
+      responseStatus: '200 OK',
+      responseColor: 'bg-emerald-500',
+      responseJson: `{\n  <span class="text-axolotl-pink-400">"comments"</span>: [\n    <span class="text-slate-500">... // array of matched comments</span>\n  ],\n  <span class="text-axolotl-pink-400">"total"</span>: <span class="text-emerald-400">2</span>,\n  <span class="text-axolotl-pink-400">"skip"</span>: <span class="text-emerald-400">0</span>,\n  <span class="text-axolotl-pink-400">"limit"</span>: <span class="text-emerald-400">30</span>\n}`
+    }) %>
+
+    <hr class="border-slate-200 my-12">
+
+    <!-- GET Single -->
+    <%- include('../partials/api-endpoint', {
+      id: 'get-single-comment',
+      title: 'Get a single comment',
+      description: 'Get a single comment by ID.',
+      fetchCode: `<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'https://axomock.dev/api/comments/1'</span>)\n  .<span class="text-blue-400">then</span>(res => res.<span class="text-blue-400">json</span>())\n  .<span class="text-blue-400">then</span>(<span class="text-blue-400">console</span>.log);`,
+      axiosCode: `<span class="text-blue-400">axios</span>.<span class="text-blue-400">get</span>(<span class="text-emerald-400">'https://axomock.dev/api/comments/1'</span>)\n  .<span class="text-blue-400">then</span>(res => <span class="text-blue-400">console</span>.log(res.data));`,
+      curlCode: `curl <span class="text-emerald-400">https://axomock.dev/api/comments/1</span>`,
+      responseStatus: '200 OK',
+      responseColor: 'bg-emerald-500',
+      responseJson: `{\n  <span class="text-axolotl-pink-400">"id"</span>: <span class="text-emerald-400">1</span>,\n  <span class="text-axolotl-pink-400">"body"</span>: <span class="text-emerald-400">"Great article! I've been using these principles in my projects and they really make a difference."</span>,\n  <span class="text-axolotl-pink-400">"postId"</span>: <span class="text-emerald-400">1</span>,\n  <span class="text-axolotl-pink-400">"user"</span>: {\n    <span class="text-axolotl-pink-400">"id"</span>: <span class="text-emerald-400">3</span>,\n    <span class="text-axolotl-pink-400">"username"</span>: <span class="text-emerald-400">"noahb"</span>\n  }\n}`
+    }) %>
+
+    <hr class="border-slate-200 my-12">
+
+    <!-- GET Limit and Skip -->
+    <%- include('../partials/api-endpoint', {
+      id: 'limit-and-skip-comments',
+      title: 'Limit and skip comments',
+      description: 'You can pass <code class="bg-slate-100 text-axolotl-pink-600 px-1.5 py-0.5 rounded font-mono text-sm">limit</code> and <code class="bg-slate-100 text-axolotl-pink-600 px-1.5 py-0.5 rounded font-mono text-sm">skip</code> params to limit and skip the results for pagination.',
+      fetchCode: `<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'https://axomock.dev/api/comments?limit=10&skip=10'</span>)\n  .<span class="text-blue-400">then</span>(res => res.<span class="text-blue-400">json</span>())\n  .<span class="text-blue-400">then</span>(<span class="text-blue-400">console</span>.log);`,
+      axiosCode: `<span class="text-blue-400">axios</span>.<span class="text-blue-400">get</span>(<span class="text-emerald-400">'https://axomock.dev/api/comments?limit=10&skip=10'</span>)\n  .<span class="text-blue-400">then</span>(res => <span class="text-blue-400">console</span>.log(res.data));`,
+      curlCode: `curl <span class="text-emerald-400">"https://axomock.dev/api/comments?limit=10&skip=10"</span>`,
+      responseStatus: '200 OK',
+      responseColor: 'bg-emerald-500',
+      responseJson: `{\n  <span class="text-axolotl-pink-400">"comments"</span>: [\n    <span class="text-slate-500">...</span>\n  ],\n  <span class="text-axolotl-pink-400">"total"</span>: <span class="text-emerald-400">100</span>,\n  <span class="text-axolotl-pink-400">"skip"</span>: <span class="text-emerald-400">10</span>,\n  <span class="text-axolotl-pink-400">"limit"</span>: <span class="text-emerald-400">10</span>\n}`
+    }) %>
+
+    <hr class="border-slate-200 my-12">
+
+    <!-- POST Create -->
+    <%- include('../partials/api-endpoint', {
+      id: 'create-comment',
+      title: 'Create a comment',
+      description: 'Adding a new comment will not add it into the server. It will simulate a POST request and will return the new created comment with a new id.',
+      fetchCode: `<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'https://axomock.dev/api/comments/add'</span>, {\n  method: <span class="text-emerald-400">'POST'</span>,\n  headers: { <span class="text-emerald-400">'Content-Type'</span>: <span class="text-emerald-400">'application/json'</span> },\n  body: <span class="text-blue-400">JSON</span>.<span class="text-blue-400">stringify</span>({\n    body: <span class="text-emerald-400">'This makes perfect sense!'</span>,\n    postId: <span class="text-emerald-400">3</span>,\n    userId: <span class="text-emerald-400">5</span>\n  })\n})\n.<span class="text-blue-400">then</span>(res => res.<span class="text-blue-400">json</span>())\n.<span class="text-blue-400">then</span>(<span class="text-blue-400">console</span>.log);`,
+      axiosCode: `<span class="text-blue-400">axios</span>.<span class="text-blue-400">post</span>(<span class="text-emerald-400">'https://axomock.dev/api/comments/add'</span>, {\n  body: <span class="text-emerald-400">'This makes perfect sense!'</span>,\n  postId: <span class="text-emerald-400">3</span>,\n  userId: <span class="text-emerald-400">5</span>\n})\n.<span class="text-blue-400">then</span>(res => <span class="text-blue-400">console</span>.log(res.data));`,
+      curlCode: `curl -X POST <span class="text-emerald-400">https://axomock.dev/api/comments/add</span> \\\n-H <span class="text-emerald-400">"Content-Type: application/json"</span> \\\n-d <span class="text-emerald-400">'{"body":"This makes perfect sense!","postId":3,"userId":5}'</span>`,
+      responseStatus: '201 Created',
+      responseColor: 'bg-emerald-500',
+      responseJson: `{\n  <span class="text-axolotl-pink-400">"id"</span>: <span class="text-emerald-400">101</span>,\n  <span class="text-axolotl-pink-400">"body"</span>: <span class="text-emerald-400">"This makes perfect sense!"</span>,\n  <span class="text-axolotl-pink-400">"postId"</span>: <span class="text-emerald-400">3</span>,\n  <span class="text-axolotl-pink-400">"userId"</span>: <span class="text-emerald-400">5</span>\n}`
+    }) %>
+
+    <hr class="border-slate-200 my-12">
+
+    <!-- PUT Update -->
+    <%- include('../partials/api-endpoint', {
+      id: 'update-comment',
+      title: 'Update a comment',
+      description: 'Updating a comment will not update it into the server. It will simulate a PUT/PATCH request and will return the updated comment.',
+      fetchCode: `<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'https://axomock.dev/api/comments/1'</span>, {\n  method: <span class="text-emerald-400">'PUT'</span>, <span class="text-slate-500">/* or PATCH */</span>\n  headers: { <span class="text-emerald-400">'Content-Type'</span>: <span class="text-emerald-400">'application/json'</span> },\n  body: <span class="text-blue-400">JSON</span>.<span class="text-blue-400">stringify</span>({\n    body: <span class="text-emerald-400">'Actually, I changed my mind.'</span>\n  })\n})\n.<span class="text-blue-400">then</span>(res => res.<span class="text-blue-400">json</span>())\n.<span class="text-blue-400">then</span>(<span class="text-blue-400">console</span>.log);`,
+      axiosCode: `<span class="text-blue-400">axios</span>.<span class="text-blue-400">put</span>(<span class="text-emerald-400">'https://axomock.dev/api/comments/1'</span>, {\n  body: <span class="text-emerald-400">'Actually, I changed my mind.'</span>\n})\n.<span class="text-blue-400">then</span>(res => <span class="text-blue-400">console</span>.log(res.data));`,
+      curlCode: `curl -X PUT <span class="text-emerald-400">https://axomock.dev/api/comments/1</span> \\\n-H <span class="text-emerald-400">"Content-Type: application/json"</span> \\\n-d <span class="text-emerald-400">'{"body":"Actually, I changed my mind."}'</span>`,
+      responseStatus: '200 OK',
+      responseColor: 'bg-emerald-500',
+      responseJson: `{\n  <span class="text-axolotl-pink-400">"id"</span>: <span class="text-emerald-400">1</span>,\n  <span class="text-axolotl-pink-400">"body"</span>: <span class="text-emerald-400">"Actually, I changed my mind."</span>,\n  <span class="text-slate-500">...</span>\n}`
+    }) %>
+
+    <hr class="border-slate-200 my-12">
+
+    <!-- DELETE Delete -->
+    <%- include('../partials/api-endpoint', {
+      id: 'delete-comment',
+      title: 'Delete a comment',
+      description: 'Deleting a comment will not delete it into the server. It will simulate a DELETE request and will return deleted comment.',
+      fetchCode: `<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'https://axomock.dev/api/comments/1'</span>, {\n  method: <span class="text-emerald-400">'DELETE'</span>,\n})\n.<span class="text-blue-400">then</span>(res => res.<span class="text-blue-400">json</span>())\n.<span class="text-blue-400">then</span>(<span class="text-blue-400">console</span>.log);`,
+      axiosCode: `<span class="text-blue-400">axios</span>.<span class="text-blue-400">delete</span>(<span class="text-emerald-400">'https://axomock.dev/api/comments/1'</span>)\n.<span class="text-blue-400">then</span>(res => <span class="text-blue-400">console</span>.log(res.data));`,
+      curlCode: `curl -X DELETE <span class="text-emerald-400">https://axomock.dev/api/comments/1</span>`,
+      responseStatus: '200 OK',
+      responseColor: 'bg-emerald-500',
+      responseJson: `{\n  <span class="text-axolotl-pink-400">"id"</span>: <span class="text-emerald-400">1</span>,\n  <span class="text-axolotl-pink-400">"body"</span>: <span class="text-emerald-400">"Great article! I've been using these principles in my projects and they really make a difference."</span>,\n  <span class="text-slate-500">...</span>,\n  <span class="text-axolotl-pink-400">"isDeleted"</span>: <span class="text-axolotl-pink-400">true</span>,\n  <span class="text-axolotl-pink-400">"deletedOn"</span>: <span class="text-emerald-400">"2026-07-08T05:42:00.000Z"</span>\n}`
+    }) %>
+
+  </div>
+</div>

@@ -1,0 +1,9 @@
+node_modules/
+public/
+src/data/*.json
+coverage/
+dist/
+.env
+.agent/
+.gemini/
+tasks/

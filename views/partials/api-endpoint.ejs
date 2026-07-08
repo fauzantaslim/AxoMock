@@ -1,0 +1,72 @@
+<div class="mb-12 scroll-mt-24" id="<%= id %>">
+  <div class="flex flex-wrap items-center gap-3 mb-4">
+    <h2 class="text-xl font-display font-bold text-slate-950"><%= title %></h2>
+  </div>
+  <div class="text-slate-600 mb-6"><%- description %></div>
+  
+  <div x-data="{ tab: 'fetch', showOutput: false }">
+    <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-sm mb-4">
+      <div class="flex items-center px-4 pt-1 bg-slate-900 border-b border-slate-800">
+        <button @click="tab = 'fetch'" :class="tab === 'fetch' ? 'text-white border-b-2 border-axolotl-pink-500' : 'text-slate-400 hover:text-slate-200'" class="px-4 py-2.5 text-xs font-mono transition-colors">fetch</button>
+        <button @click="tab = 'axios'" :class="tab === 'axios' ? 'text-white border-b-2 border-axolotl-pink-500' : 'text-slate-400 hover:text-slate-200'" class="px-4 py-2.5 text-xs font-mono transition-colors">axios</button>
+        <button @click="tab = 'curl'" :class="tab === 'curl' ? 'text-white border-b-2 border-axolotl-pink-500' : 'text-slate-400 hover:text-slate-200'" class="px-4 py-2.5 text-xs font-mono transition-colors">cURL</button>
+      </div>
+      
+      <div class="relative group" x-data="{ copiedReq: false }">
+        <button @click="
+          let text = '';
+          if (tab === 'fetch') text = $refs.fetchCode.innerText;
+          else if (tab === 'axios') text = $refs.axiosCode.innerText;
+          else if (tab === 'curl') text = $refs.curlCode.innerText;
+          navigator.clipboard.writeText(text);
+          copiedReq = true;
+          setTimeout(() => copiedReq = false, 2000);
+        " class="absolute top-4 right-4 p-2 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition-colors border border-slate-700 z-10" title="Copy code">
+          <svg x-show="!copiedReq" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+          </svg>
+          <svg x-show="copiedReq" x-cloak class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </button>
+        <div class="p-4 md:p-6 overflow-x-auto">
+          <!-- Fetch -->
+          <pre x-ref="fetchCode" x-show="tab === 'fetch'" class="font-mono text-sm leading-relaxed text-slate-300 pr-12"><code><%- fetchCode %></code></pre>
+          <!-- Axios -->
+          <pre x-ref="axiosCode" x-show="tab === 'axios'" x-cloak class="font-mono text-sm leading-relaxed text-slate-300 pr-12"><code><%- axiosCode %></code></pre>
+          <!-- cURL -->
+          <pre x-ref="curlCode" x-show="tab === 'curl'" x-cloak class="font-mono text-sm leading-relaxed text-slate-300 pr-12"><code><%- curlCode %></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <button @click="showOutput = !showOutput" class="px-5 py-2.5 border-2 border-slate-900 rounded-lg text-sm font-semibold text-slate-900 hover:bg-slate-900 hover:text-white transition-colors bg-white shadow-sm mb-4">
+      <span x-text="showOutput ? 'Hide Output' : 'Show Output'"></span>
+    </button>
+
+    <div x-show="showOutput" x-collapse>
+      <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-sm mt-2">
+        <div class="px-4 py-2 bg-slate-900 border-b border-slate-800 text-xs font-mono text-slate-400 flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full <%= responseColor %>"></span> <%= responseStatus %>
+        </div>
+        <div class="relative group" x-data="{ copied: false }">
+          <button @click="
+            navigator.clipboard.writeText($refs.responseContent.innerText);
+            copied = true;
+            setTimeout(() => copied = false, 2000);
+          " class="absolute top-4 right-4 p-2 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition-colors border border-slate-700 z-10" title="Copy response">
+            <svg x-show="!copied" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
+            <svg x-show="copied" x-cloak class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </button>
+          <div class="p-4 md:p-6 overflow-x-auto">
+            <pre x-ref="responseContent" class="font-mono text-sm leading-relaxed text-slate-300 pr-12"><code><%- responseJson %></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

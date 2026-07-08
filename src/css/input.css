@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* You can add custom base styles here if needed, but Tailwind resets cover most things */
+}
+
+@layer components {
+  /* Keeping some generic custom component classes if Alpine/Tailwind get too long */
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-slate-200/50 shadow-sm;
+  }
+}

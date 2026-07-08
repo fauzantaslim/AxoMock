@@ -1,0 +1,64 @@
+<div class="flex flex-col md:flex-row max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 gap-8">
+  <%- include('../partials/docs-sidebar', { activeSection: 'index' }) %>
+  
+  <div class="flex-1 max-w-3xl min-w-0 pb-20">
+    <h1 id="introduction" class="text-3xl md:text-4xl font-display font-bold text-slate-950 mb-4">Welcome to Axomock Docs</h1>
+    <p class="text-lg text-slate-600 mb-12 leading-relaxed">
+      Learn how to use Axomock to supercharge your frontend development. No database, no configuration. Just fast, regenerative mock data.
+    </p>
+
+    <!-- Quick Start -->
+    <div class="mb-12 scroll-mt-24" id="quick-start">
+      <h2 class="text-2xl font-display font-bold text-slate-950 mb-4 pb-2 border-b border-slate-200">Quick start</h2>
+      <p class="text-slate-600 mb-4">You can use any HTTP client (fetch, axios, curl) to access the API.</p>
+      
+      <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-sm relative group mb-6">
+        <div class="p-4 md:p-6 overflow-x-auto">
+          <pre class="font-mono text-sm leading-relaxed text-slate-300"><code><span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'https://axomock.dev/api/users/1'</span>)
+  .<span class="text-deep-teal">then</span>(res => res.<span class="text-blue-400">json</span>())
+  .<span class="text-deep-teal">then</span>(<span class="text-blue-400">console</span>.log);</code></pre>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Pagination -->
+    <div class="mb-12 scroll-mt-24" id="pagination">
+      <h2 class="text-2xl font-display font-bold text-slate-950 mb-4 pb-2 border-b border-slate-200">Pagination</h2>
+      <p class="text-slate-600 mb-4">Use <code class="bg-slate-100 text-axolotl-pink-600 px-1.5 py-0.5 rounded font-mono text-sm">limit</code> and <code class="bg-slate-100 text-axolotl-pink-600 px-1.5 py-0.5 rounded font-mono text-sm">skip</code> query parameters to paginate results.</p>
+      
+      <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-sm relative group">
+        <div class="p-4 md:p-6 overflow-x-auto">
+          <pre class="font-mono text-sm leading-relaxed text-slate-300"><code><span class="text-slate-500">// Get 10 users, skipping the first 20</span>
+<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'/api/users?limit=10&skip=20'</span>)</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sorting -->
+    <div class="mb-12 scroll-mt-24" id="sorting">
+      <h2 class="text-2xl font-display font-bold text-slate-950 mb-4 pb-2 border-b border-slate-200">Sorting</h2>
+      <p class="text-slate-600 mb-4">Use <code class="bg-slate-100 text-axolotl-pink-600 px-1.5 py-0.5 rounded font-mono text-sm">sortBy</code> and <code class="bg-slate-100 text-axolotl-pink-600 px-1.5 py-0.5 rounded font-mono text-sm">order</code> (asc/desc) to sort data.</p>
+      
+      <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-sm relative group">
+        <div class="p-4 md:p-6 overflow-x-auto">
+          <pre class="font-mono text-sm leading-relaxed text-slate-300"><code><span class="text-slate-500">// Get users sorted by firstName in descending order</span>
+<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'/api/users?sortBy=firstName&order=desc'</span>)</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delay -->
+    <div class="mb-12 scroll-mt-24" id="delay">
+      <h2 class="text-2xl font-display font-bold text-slate-950 mb-4 pb-2 border-b border-slate-200">Delay simulation</h2>
+      <p class="text-slate-600 mb-4">Append <code class="bg-slate-100 text-axolotl-pink-600 px-1.5 py-0.5 rounded font-mono text-sm">?delay=ms</code> to any API endpoint to simulate slow network connections.</p>
+      
+      <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-sm relative group">
+        <div class="p-4 md:p-6 overflow-x-auto">
+          <pre class="font-mono text-sm leading-relaxed text-slate-300"><code><span class="text-slate-500">// Wait 3000ms (3 seconds) before receiving the response</span>
+<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'/api/users?delay=3000'</span>)</code></pre>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,143 @@
+<aside 
+  class="w-full md:w-64 flex-shrink-0 md:border-r border-slate-200 py-6 pr-0 md:pr-4 mb-8 md:mb-0 md:sticky md:top-24 md:max-h-[calc(100vh-6rem)] md:overflow-y-auto custom-scrollbar" 
+  id="docsSidebar"
+  x-data="{ mobileDocsOpen: false }"
+>
+  <!-- Mobile Docs Toggle -->
+  <div class="md:hidden mb-4">
+    <button 
+      @click="mobileDocsOpen = !mobileDocsOpen"
+      class="w-full flex items-center justify-between px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-700 font-medium"
+    >
+      <span class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
+        Docs Navigation
+      </span>
+      <svg :class="{'rotate-180': mobileDocsOpen}" class="w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+    </button>
+  </div>
+
+  <nav :class="{'hidden md:block': !mobileDocsOpen, 'block': mobileDocsOpen}" class="space-y-8">
+    <!-- Getting Started -->
+    <div>
+      <h3 class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Getting Started</h3>
+      <div class="space-y-1">
+        <a href="/docs" class="flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 <%= activeSection === 'index' ? 'bg-teal-50/50 text-deep-teal ring-1 ring-deep-teal/10 shadow-[inset_0_1px_1px_rgba(0,0,0,0.02)]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' %>">
+          Overview
+        </a>
+        
+        <div x-show="'<%= activeSection %>' === 'index'" x-collapse>
+          <div class="ml-4 mt-2 mb-3 space-y-1.5 border-l border-slate-200 pl-3">
+            <a href="#introduction" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Introduction</a>
+            <a href="#quick-start" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Quick start</a>
+            <a href="#pagination" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Pagination</a>
+            <a href="#sorting" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Sorting</a>
+            <a href="#search" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Search & filter</a>
+            <a href="#select" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Field selection</a>
+            <a href="#delay" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Delay simulation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resources -->
+    <div>
+      <h3 class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Resources</h3>
+      <div class="space-y-1">
+        <a href="/docs/users" class="flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 <%= activeSection === 'users' ? 'bg-teal-50/50 text-deep-teal ring-1 ring-deep-teal/10 shadow-[inset_0_1px_1px_rgba(0,0,0,0.02)]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' %>">
+          Users
+        </a>
+        <div x-show="'<%= activeSection %>' === 'users'" x-collapse>
+          <div class="ml-4 mt-2 mb-3 space-y-1.5 border-l border-slate-200 pl-3">
+            <a href="#get-all-users" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Get all users</a>
+            <a href="#get-single-user" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Get a single user</a>
+            <a href="#search-users" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Search users</a>
+            <a href="#filter-users" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Filter users</a>
+            <a href="#get-user-posts" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Get user's posts</a>
+            <a href="#get-user-todos" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Get user's todos</a>
+            <a href="#limit-and-skip-users" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Limit and skip</a>
+            <a href="#sort-users" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Sort users</a>
+            <a href="#create-user" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Create a user</a>
+            <a href="#update-user" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Update a user</a>
+            <a href="#delete-user" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Delete a user</a>
+          </div>
+        </div>
+
+        <a href="/docs/posts" class="flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 <%= activeSection === 'posts' ? 'bg-teal-50/50 text-deep-teal ring-1 ring-deep-teal/10 shadow-[inset_0_1px_1px_rgba(0,0,0,0.02)]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' %>">
+          Posts
+        </a>
+        <div x-show="'<%= activeSection %>' === 'posts'" x-collapse>
+          <div class="ml-4 mt-2 mb-3 space-y-1.5 border-l border-slate-200 pl-3">
+            <a href="#get-all-posts" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Get all posts</a>
+            <a href="#get-single-post" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Get a single post</a>
+            <a href="#search-posts" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Search posts</a>
+            <a href="#get-post-comments" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Get post's comments</a>
+            <a href="#filter-posts" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Filter by tag</a>
+            <a href="#limit-and-skip-posts" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Limit and skip</a>
+            <a href="#sort-posts" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Sort posts</a>
+            <a href="#create-post" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Create a post</a>
+            <a href="#update-post" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Update a post</a>
+            <a href="#delete-post" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Delete a post</a>
+          </div>
+        </div>
+
+        <a href="/docs/comments" class="flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 <%= activeSection === 'comments' ? 'bg-teal-50/50 text-deep-teal ring-1 ring-deep-teal/10 shadow-[inset_0_1px_1px_rgba(0,0,0,0.02)]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' %>">
+          Comments
+        </a>
+        <div x-show="'<%= activeSection %>' === 'comments'" x-collapse>
+          <div class="ml-4 mt-2 mb-3 space-y-1.5 border-l border-slate-200 pl-3">
+            <a href="#get-all-comments" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Get all comments</a>
+            <a href="#search-comments" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Search comments</a>
+            <a href="#get-single-comment" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Get a single comment</a>
+            <a href="#limit-and-skip-comments" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Limit and skip</a>
+            <a href="#create-comment" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Create a comment</a>
+            <a href="#update-comment" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Update a comment</a>
+            <a href="#delete-comment" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Delete a comment</a>
+          </div>
+        </div>
+
+        <a href="/docs/todos" class="flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 <%= activeSection === 'todos' ? 'bg-teal-50/50 text-deep-teal ring-1 ring-deep-teal/10 shadow-[inset_0_1px_1px_rgba(0,0,0,0.02)]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' %>">
+          Todos
+        </a>
+        <div x-show="'<%= activeSection %>' === 'todos'" x-collapse>
+          <div class="ml-4 mt-2 mb-3 space-y-1.5 border-l border-slate-200 pl-3">
+            <a href="#get-all-todos" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Get all todos</a>
+            <a href="#get-single-todo" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Get a single todo</a>
+            <a href="#search-todos" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Search todos</a>
+            <a href="#get-random-todo" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Get a random todo</a>
+            <a href="#limit-and-skip-todos" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Limit and skip</a>
+            <a href="#create-todo" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Create a todo</a>
+            <a href="#update-todo" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Update a todo</a>
+            <a href="#delete-todo" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Delete a todo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Other -->
+    <div>
+      <h3 class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Other</h3>
+      <div class="space-y-1">
+        <a href="/docs/auth" class="flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 <%= activeSection === 'auth' ? 'bg-teal-50/50 text-deep-teal ring-1 ring-deep-teal/10 shadow-[inset_0_1px_1px_rgba(0,0,0,0.02)]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' %>">
+          Authentication
+        </a>
+        <div x-show="'<%= activeSection %>' === 'auth'" x-collapse>
+          <div class="ml-4 mt-2 mb-3 space-y-1.5 border-l border-slate-200 pl-3">
+            <a href="#login" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Login user</a>
+            <a href="#get-auth-user" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Get auth user</a>
+            <a href="#refresh-token" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Refresh token</a>
+          </div>
+        </div>
+
+        <a href="/docs/http-status" class="flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 <%= activeSection === 'http-status' ? 'bg-teal-50/50 text-deep-teal ring-1 ring-deep-teal/10 shadow-[inset_0_1px_1px_rgba(0,0,0,0.02)]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' %>">
+          HTTP status codes
+        </a>
+        <div x-show="'<%= activeSection %>' === 'http-status'" x-collapse>
+          <div class="ml-4 mt-2 mb-3 space-y-1.5 border-l border-slate-200 pl-3">
+            <a href="#get-http-status" class="block py-1 text-sm text-slate-500 hover:text-slate-900 transition-colors">Get HTTP status</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</aside>

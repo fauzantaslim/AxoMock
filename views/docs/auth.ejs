@@ -1,0 +1,54 @@
+<div class="flex flex-col md:flex-row max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 gap-8">
+  <%- include('../partials/docs-sidebar', { activeSection: 'auth' }) %>
+  
+  <div class="flex-1 max-w-3xl min-w-0 pb-20">
+    <h1 id="auth" class="text-3xl md:text-4xl font-display font-bold text-slate-950 mb-4">🔐 Authentication</h1>
+    <p class="text-lg text-slate-600 mb-12 leading-relaxed">
+      Simulate login flows with JWT tokens. Use any mock user's credentials to test.
+    </p>
+
+    <!-- POST Login -->
+    <%- include('../partials/api-endpoint', {
+      id: 'login',
+      title: 'Login user',
+      description: 'Login to get an access token. You can use any mock user\'s <code class="bg-slate-100 text-axolotl-pink-600 px-1.5 py-0.5 rounded font-mono text-sm">username</code> and <code class="bg-slate-100 text-axolotl-pink-600 px-1.5 py-0.5 rounded font-mono text-sm">password</code> from the <a href="/docs/users" class="text-deep-teal hover:underline">Users API</a>.',
+      fetchCode: `<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'https://axomock.dev/api/auth/login'</span>, {\n  method: <span class="text-emerald-400">'POST'</span>,\n  headers: { <span class="text-emerald-400">'Content-Type'</span>: <span class="text-emerald-400">'application/json'</span> },\n  body: <span class="text-blue-400">JSON</span>.<span class="text-blue-400">stringify</span>({\n    username: <span class="text-emerald-400">'hbingley1'</span>,\n    password: <span class="text-emerald-400">'CQutx25i8r'</span>\n  })\n})\n.<span class="text-blue-400">then</span>(res => res.<span class="text-blue-400">json</span>())\n.<span class="text-blue-400">then</span>(<span class="text-blue-400">console</span>.log);`,
+      axiosCode: `<span class="text-blue-400">axios</span>.<span class="text-blue-400">post</span>(<span class="text-emerald-400">'https://axomock.dev/api/auth/login'</span>, {\n  username: <span class="text-emerald-400">'hbingley1'</span>,\n  password: <span class="text-emerald-400">'CQutx25i8r'</span>\n})\n.<span class="text-blue-400">then</span>(res => <span class="text-blue-400">console</span>.log(res.data));`,
+      curlCode: `curl -X POST <span class="text-emerald-400">https://axomock.dev/api/auth/login</span> \\\n-H <span class="text-emerald-400">"Content-Type: application/json"</span> \\\n-d <span class="text-emerald-400">'{"username":"hbingley1","password":"CQutx25i8r"}'</span>`,
+      responseStatus: '200 OK',
+      responseColor: 'bg-emerald-500',
+      responseJson: `{\n  <span class="text-axolotl-pink-400">"id"</span>: <span class="text-emerald-400">2</span>,\n  <span class="text-axolotl-pink-400">"username"</span>: <span class="text-emerald-400">"hbingley1"</span>,\n  <span class="text-axolotl-pink-400">"email"</span>: <span class="text-emerald-400">"hbingley1@plala.or.jp"</span>,\n  <span class="text-axolotl-pink-400">"firstName"</span>: <span class="text-emerald-400">"Hugh"</span>,\n  <span class="text-axolotl-pink-400">"lastName"</span>: <span class="text-emerald-400">"Bingley"</span>,\n  <span class="text-axolotl-pink-400">"image"</span>: <span class="text-emerald-400">"https://robohash.org/Hugh.png"</span>,\n  <span class="text-axolotl-pink-400">"token"</span>: <span class="text-deep-teal">"eyJhbGciOiJIUzI1NiIsInR..."</span>,\n  <span class="text-axolotl-pink-400">"refreshToken"</span>: <span class="text-deep-teal">"a1b2c3d4e5f6..."</span>\n}`
+    }) %>
+    
+    <hr class="border-slate-200 my-12">
+
+    <!-- GET Auth User -->
+    <%- include('../partials/api-endpoint', {
+      id: 'get-auth-user',
+      title: 'Get auth user',
+      description: 'Get the currently authenticated user. Requires a valid JWT token in the <code class="bg-slate-100 text-axolotl-pink-600 px-1.5 py-0.5 rounded font-mono text-sm">Authorization: Bearer &lt;token&gt;</code> header.',
+      fetchCode: `<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'https://axomock.dev/api/auth/me'</span>, {\n  headers: { <span class="text-emerald-400">'Authorization'</span>: <span class="text-emerald-400">'Bearer eyJhbGciOiJIUzI1NiIsInR...'</span> }\n})\n.<span class="text-blue-400">then</span>(res => res.<span class="text-blue-400">json</span>())\n.<span class="text-blue-400">then</span>(<span class="text-blue-400">console</span>.log);`,
+      axiosCode: `<span class="text-blue-400">axios</span>.<span class="text-blue-400">get</span>(<span class="text-emerald-400">'https://axomock.dev/api/auth/me'</span>, {\n  headers: { <span class="text-emerald-400">'Authorization'</span>: <span class="text-emerald-400">'Bearer eyJhbGciOiJIUzI1NiIsInR...'</span> }\n})\n.<span class="text-blue-400">then</span>(res => <span class="text-blue-400">console</span>.log(res.data));`,
+      curlCode: `curl -H <span class="text-emerald-400">"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR..."</span> <span class="text-emerald-400">https://axomock.dev/api/auth/me</span>`,
+      responseStatus: '200 OK',
+      responseColor: 'bg-emerald-500',
+      responseJson: `{\n  <span class="text-axolotl-pink-400">"id"</span>: <span class="text-emerald-400">2</span>,\n  <span class="text-axolotl-pink-400">"username"</span>: <span class="text-emerald-400">"hbingley1"</span>,\n  <span class="text-axolotl-pink-400">"email"</span>: <span class="text-emerald-400">"hbingley1@plala.or.jp"</span>,\n  <span class="text-axolotl-pink-400">"firstName"</span>: <span class="text-emerald-400">"Hugh"</span>,\n  <span class="text-axolotl-pink-400">"lastName"</span>: <span class="text-emerald-400">"Bingley"</span>,\n  <span class="text-axolotl-pink-400">"image"</span>: <span class="text-emerald-400">"https://robohash.org/Hugh.png"</span>\n}`
+    }) %>
+
+    <hr class="border-slate-200 my-12">
+
+    <!-- POST Refresh Token -->
+    <%- include('../partials/api-endpoint', {
+      id: 'refresh-token',
+      title: 'Refresh token',
+      description: 'Get a new access token using a refresh token.',
+      fetchCode: `<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'https://axomock.dev/api/auth/refresh'</span>, {\n  method: <span class="text-emerald-400">'POST'</span>,\n  headers: { <span class="text-emerald-400">'Content-Type'</span>: <span class="text-emerald-400">'application/json'</span> },\n  body: <span class="text-blue-400">JSON</span>.<span class="text-blue-400">stringify</span>({\n    refreshToken: <span class="text-emerald-400">'a1b2c3d4e5f6...'</span>\n  })\n})\n.<span class="text-blue-400">then</span>(res => res.<span class="text-blue-400">json</span>())\n.<span class="text-blue-400">then</span>(<span class="text-blue-400">console</span>.log);`,
+      axiosCode: `<span class="text-blue-400">axios</span>.<span class="text-blue-400">post</span>(<span class="text-emerald-400">'https://axomock.dev/api/auth/refresh'</span>, {\n  refreshToken: <span class="text-emerald-400">'a1b2c3d4e5f6...'</span>\n})\n.<span class="text-blue-400">then</span>(res => <span class="text-blue-400">console</span>.log(res.data));`,
+      curlCode: `curl -X POST <span class="text-emerald-400">https://axomock.dev/api/auth/refresh</span> \\\n-H <span class="text-emerald-400">"Content-Type: application/json"</span> \\\n-d <span class="text-emerald-400">'{"refreshToken":"a1b2c3d4e5f6..."}'</span>`,
+      responseStatus: '200 OK',
+      responseColor: 'bg-emerald-500',
+      responseJson: `{\n  <span class="text-axolotl-pink-400">"token"</span>: <span class="text-deep-teal">"eyJhbGciOiJIUzI1NiIsInR..."</span>,\n  <span class="text-axolotl-pink-400">"refreshToken"</span>: <span class="text-deep-teal">"a1b2c3d4e5f6..."</span>\n}`
+    }) %>
+
+  </div>
+</div>
