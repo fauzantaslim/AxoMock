@@ -14,7 +14,7 @@
     "check": "npm run lint",
     "check-format": "prettier --check .",
     "check-lint": "eslint .",
-    "minify": "uglifyjs public/js/explorer.js -o public/js/explorer.min.js -c -m && uglifyjs public/js/docs.js -o public/js/docs.min.js -c -m",
+    "minify": "uglifyjs public/js/copy-code.js -o public/js/copy-code.min.js -c -m && uglifyjs public/js/docs.js -o public/js/docs.min.js -c -m",
     "prepare": "husky"
   },
   "keywords": [
