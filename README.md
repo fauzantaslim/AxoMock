@@ -1,4 +1,4 @@
-<div align="center">
+﻿<div align="center">
   <img src="public/images/head-axo.png" alt="Axomock Logo" width="120" />
 </div>
 
@@ -9,11 +9,11 @@
 </p>
 
 <div align="center">
-  <a href="https://axomock.dev">Website</a>
+  <a href="https://axomock.fauzantaslim.biz.id">Website</a>
   <span> • </span>
-  <a href="https://axomock.dev/docs">Documentation</a>
+  <a href="https://axomock.fauzantaslim.biz.id/docs">Documentation</a>
   <span> • </span>
-  <a href="https://axomock.dev/mock">Mock Builder</a>
+  <a href="https://axomock.fauzantaslim.biz.id/mock">Mock Builder</a>
 </div>
 
 <br />
@@ -32,7 +32,7 @@ We know you want to build UI, not configure fake servers. Axomock works out of t
 
 ```javascript
 // Just fetch. That's it.
-const response = await fetch('https://axomock.dev/api/users');
+const response = await fetch('https://axomock.fauzantaslim.biz.id/api/users');
 const users = await response.json();
 console.log(users);
 ```
@@ -51,12 +51,12 @@ We're playful on the outside, but serious about the details. Axomock supports ex
 
 Ready to dive in? Here are our primary endpoints:
 
-- [`/api/auth`](https://axomock.dev/docs/auth) — Simulate JWT login flows.
-- [`/api/users`](https://axomock.dev/docs/users) — Rich user profiles with avatars and relational data.
-- [`/api/posts`](https://axomock.dev/docs/posts) — Tech blog posts, tags, and reactions.
-- [`/api/comments`](https://axomock.dev/docs/comments) — Threads linked to users and posts.
-- [`/api/todos`](https://axomock.dev/docs/todos) — Developer-themed task lists.
-- [`/api/http-status`](https://axomock.dev/docs/http-status) — Test your error boundaries.
+- [`/api/auth`](https://axomock.fauzantaslim.biz.id/docs/auth) — Simulate JWT login flows.
+- [`/api/users`](https://axomock.fauzantaslim.biz.id/docs/users) — Rich user profiles with avatars and relational data.
+- [`/api/posts`](https://axomock.fauzantaslim.biz.id/docs/posts) — Tech blog posts, tags, and reactions.
+- [`/api/comments`](https://axomock.fauzantaslim.biz.id/docs/comments) — Threads linked to users and posts.
+- [`/api/todos`](https://axomock.fauzantaslim.biz.id/docs/todos) — Developer-themed task lists.
+- [`/api/http-status`](https://axomock.fauzantaslim.biz.id/docs/http-status) — Test your error boundaries.
 
 ## 🤝 Built by Developers, for Developers
 

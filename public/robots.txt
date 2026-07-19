@@ -1,4 +1,4 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 
-Sitemap: https://axomock.dev/sitemap.xml
+Sitemap: https://axomock.fauzantaslim.biz.id/sitemap.xml

@@ -15,7 +15,7 @@
     "check-format": "prettier --check .",
     "check-lint": "eslint .",
     "minify": "uglifyjs public/js/copy-code.js -o public/js/copy-code.min.js -c -m && uglifyjs public/js/docs.js -o public/js/docs.min.js -c -m",
-    "prepare": "husky"
+    "prepare": "node -e \"if (process.env.NODE_ENV === 'production') { process.exit(0); }\" && husky || true"
   },
   "keywords": [
     "mock",
