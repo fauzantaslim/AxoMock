@@ -1,4 +1,4 @@
-﻿<div class="flex flex-col md:flex-row max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 gap-8">
+<div class="flex flex-col md:flex-row max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 gap-8">
   <%- include('../partials/docs-sidebar', { activeSection: 'users' }) %>
   
   <div class="flex-1 max-w-3xl min-w-0 pb-20">
@@ -50,21 +50,6 @@
       responseStatus: '200 OK',
       responseColor: 'bg-emerald-500',
       responseJson: `{\n  <span class="text-axolotl-pink-400">"users"</span>: [\n    <span class="text-slate-500">... // array of matched users</span>\n  ],\n  <span class="text-axolotl-pink-400">"total"</span>: <span class="text-emerald-400">2</span>,\n  <span class="text-axolotl-pink-400">"skip"</span>: <span class="text-emerald-400">0</span>,\n  <span class="text-axolotl-pink-400">"limit"</span>: <span class="text-emerald-400">30</span>\n}`
-    }) %>
-
-    <hr class="border-slate-200 my-12">
-
-    <!-- GET Filter -->
-    <%- include('../partials/api-endpoint', {
-      id: 'filter-users',
-      title: 'Filter users',
-      description: 'Filter users by a specific key and value.',
-      fetchCode: `<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'https://axomock.fauzantaslim.biz.id/api/users/filter?key=age&value=28'</span>)\n  .<span class="text-blue-400">then</span>(res => res.<span class="text-blue-400">json</span>())\n  .<span class="text-blue-400">then</span>(<span class="text-blue-400">console</span>.log);`,
-      axiosCode: `<span class="text-blue-400">axios</span>.<span class="text-blue-400">get</span>(<span class="text-emerald-400">'https://axomock.fauzantaslim.biz.id/api/users/filter?key=age&value=28'</span>)\n  .<span class="text-blue-400">then</span>(res => <span class="text-blue-400">console</span>.log(res.data));`,
-      curlCode: `curl <span class="text-emerald-400">"https://axomock.fauzantaslim.biz.id/api/users/filter?key=age&value=28"</span>`,
-      responseStatus: '200 OK',
-      responseColor: 'bg-emerald-500',
-      responseJson: `{\n  <span class="text-axolotl-pink-400">"users"</span>: [\n    <span class="text-slate-500">... // array of matched users</span>\n  ],\n  <span class="text-axolotl-pink-400">"total"</span>: <span class="text-emerald-400">1</span>,\n  <span class="text-axolotl-pink-400">"skip"</span>: <span class="text-emerald-400">0</span>,\n  <span class="text-axolotl-pink-400">"limit"</span>: <span class="text-emerald-400">30</span>\n}`
     }) %>
 
     <hr class="border-slate-200 my-12">
@@ -134,9 +119,9 @@
       id: 'create-user',
       title: 'Add a new user',
       description: 'Adding a new user will not add it into the server. It will simulate a POST request and will return the new created user with a new id.',
-      fetchCode: `<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'https://axomock.fauzantaslim.biz.id/api/users/add'</span>, {\n  method: <span class="text-emerald-400">'POST'</span>,\n  headers: { <span class="text-emerald-400">'Content-Type'</span>: <span class="text-emerald-400">'application/json'</span> },\n  body: <span class="text-blue-400">JSON</span>.<span class="text-blue-400">stringify</span>({\n    firstName: <span class="text-emerald-400">'Axo'</span>,\n    lastName: <span class="text-emerald-400">'Lotl'</span>,\n    age: <span class="text-emerald-400">25</span>,\n  })\n})\n.<span class="text-blue-400">then</span>(res => res.<span class="text-blue-400">json</span>())\n.<span class="text-blue-400">then</span>(<span class="text-blue-400">console</span>.log);`,
-      axiosCode: `<span class="text-blue-400">axios</span>.<span class="text-blue-400">post</span>(<span class="text-emerald-400">'https://axomock.fauzantaslim.biz.id/api/users/add'</span>, {\n  firstName: <span class="text-emerald-400">'Axo'</span>,\n  lastName: <span class="text-emerald-400">'Lotl'</span>,\n  age: <span class="text-emerald-400">25</span>\n})\n.<span class="text-blue-400">then</span>(res => <span class="text-blue-400">console</span>.log(res.data));`,
-      curlCode: `curl -X POST <span class="text-emerald-400">https://axomock.fauzantaslim.biz.id/api/users/add</span> \\\n-H <span class="text-emerald-400">"Content-Type: application/json"</span> \\\n-d <span class="text-emerald-400">'{"firstName":"Axo","lastName":"Lotl","age":25}'</span>`,
+      fetchCode: `<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'https://axomock.fauzantaslim.biz.id/api/users'</span>, {\n  method: <span class="text-emerald-400">'POST'</span>,\n  headers: { <span class="text-emerald-400">'Content-Type'</span>: <span class="text-emerald-400">'application/json'</span> },\n  body: <span class="text-blue-400">JSON</span>.<span class="text-blue-400">stringify</span>({\n    firstName: <span class="text-emerald-400">'Axo'</span>,\n    lastName: <span class="text-emerald-400">'Lotl'</span>,\n    age: <span class="text-emerald-400">25</span>,\n  })\n})\n.<span class="text-blue-400">then</span>(res => res.<span class="text-blue-400">json</span>())\n.<span class="text-blue-400">then</span>(<span class="text-blue-400">console</span>.log);`,
+      axiosCode: `<span class="text-blue-400">axios</span>.<span class="text-blue-400">post</span>(<span class="text-emerald-400">'https://axomock.fauzantaslim.biz.id/api/users'</span>, {\n  firstName: <span class="text-emerald-400">'Axo'</span>,\n  lastName: <span class="text-emerald-400">'Lotl'</span>,\n  age: <span class="text-emerald-400">25</span>\n})\n.<span class="text-blue-400">then</span>(res => <span class="text-blue-400">console</span>.log(res.data));`,
+      curlCode: `curl -X POST <span class="text-emerald-400">https://axomock.fauzantaslim.biz.id/api/users</span> \\\n-H <span class="text-emerald-400">"Content-Type: application/json"</span> \\\n-d <span class="text-emerald-400">'{"firstName":"Axo","lastName":"Lotl","age":25}'</span>`,
       responseStatus: '201 Created',
       responseColor: 'bg-emerald-500',
       responseJson: `{\n  <span class="text-axolotl-pink-400">"id"</span>: <span class="text-emerald-400">31</span>,\n  <span class="text-axolotl-pink-400">"firstName"</span>: <span class="text-emerald-400">"Axo"</span>,\n  <span class="text-axolotl-pink-400">"lastName"</span>: <span class="text-emerald-400">"Lotl"</span>,\n  <span class="text-axolotl-pink-400">"age"</span>: <span class="text-emerald-400">25</span>,\n  <span class="text-axolotl-pink-400">"createdAt"</span>: <span class="text-emerald-400">"2026-07-08T11:49:12.000Z"</span>\n}`

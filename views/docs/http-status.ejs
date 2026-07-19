@@ -1,4 +1,4 @@
-﻿<div class="flex flex-col md:flex-row max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 gap-8">
+<div class="flex flex-col md:flex-row max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 gap-8">
   <%- include('../partials/docs-sidebar', { activeSection: 'http-status' }) %>
   
   <div class="flex-1 max-w-3xl min-w-0 pb-20">
@@ -13,7 +13,7 @@
     <%- include('../partials/api-endpoint', {
       id: 'get-http-status',
       title: 'Get specific HTTP status',
-      description: 'Returns the specified HTTP status code. Supports all standard HTTP verbs (GET, POST, PUT, DELETE, PATCH).<br><br>Examples:<br>- <code>GET /api/http/200</code> -> 200 OK<br>- <code>GET /api/http/404</code> -> 404 Not Found<br>- <code>POST /api/http/401</code> -> 401 Unauthorized<br>- <code>DELETE /api/http/500</code> -> 500 Internal Server Error',
+      description: 'Returns the specified HTTP status code using a <code class="bg-slate-100 text-axolotl-pink-600 px-1.5 py-0.5 rounded font-mono text-sm">GET</code> request.<br><br>Examples:<br>- <code>GET /api/http/200</code> → 200 OK<br>- <code>GET /api/http/404</code> → 404 Not Found<br>- <code>GET /api/http/401</code> → 401 Unauthorized<br>- <code>GET /api/http/500</code> → 500 Internal Server Error',
       fetchCode: `<span class="text-blue-400">fetch</span>(<span class="text-emerald-400">'https://axomock.fauzantaslim.biz.id/api/http/404'</span>)\n  .<span class="text-blue-400">then</span>(res => res.<span class="text-blue-400">json</span>())\n  .<span class="text-blue-400">then</span>(<span class="text-blue-400">console</span>.log);`,
       axiosCode: `<span class="text-blue-400">axios</span>.<span class="text-blue-400">get</span>(<span class="text-emerald-400">'https://axomock.fauzantaslim.biz.id/api/http/404'</span>)\n  .<span class="text-blue-400">then</span>(res => <span class="text-blue-400">console</span>.log(res.data));`,
       curlCode: `curl <span class="text-emerald-400">https://axomock.fauzantaslim.biz.id/api/http/404</span>`,
